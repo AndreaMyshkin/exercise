@@ -7,7 +7,8 @@ class Products extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        slug: this.props.match.params.id
+        slug: this.props.match.params.id,
+        
       };
     }
   
@@ -26,11 +27,26 @@ componentWillMount(id) {
       }
     }
     render() {
-        let menuCategories = this.props.items.allProducts
-    console.log(menuCategories)
+        let menuCategories = this.props.items.allProducts;
+        console.log(menuCategories)
+        let getCategory = this.props.match.params.id
+
       return (
         <div>
-          <h3>resultados </h3>
+          <h3>resultados:{getCategory} </h3>
+          {menuCategories ? (
+          <div>
+            {menuCategories.results.map(item => (      
+              <div className="">
+                    <img src={item.photo.small}/>
+                  <h1>{item.name}</h1> 
+                  <p>{item.store.name}</p>
+            <p>{item.price}</p> 
+              </div>
+            ))}
+          </div>
+        ) : null}
+
         </div>
       );
     }

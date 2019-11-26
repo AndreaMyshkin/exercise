@@ -17,7 +17,7 @@ class App extends Component {
 
   render() {
     let menuCategories = this.props.items.menuList;
-    
+    console.log(menuCategories)
     return (
       <>
         <h1>Menu</h1>

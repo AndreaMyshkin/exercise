@@ -1,7 +1,7 @@
 import axios from "axios";
 const proxyUrl = "https://cors-anywhere.herokuapp.com/";
 const apiMenu = "https://canastarosa.com/services/api/v1/market/categories/";
-const apiProducts = "https://canastarosa.com/api/v1/market/products/";
+const apiProducts = "https://canastarosa.com/services/api/v1/market/products/";
 
 export const menu = () => {
   const request = axios.get(proxyUrl + apiMenu).then(res => res.data);
@@ -13,7 +13,7 @@ export const menu = () => {
 
 export const allProducts = slug => {
   const request = axios
-    .get(`${proxyUrl}${apiProducts}?category_slug=${slug}`)
+    .get(`${proxyUrl}${apiProducts}?category__slug=${slug}`)
     .then(res => res.data);
   return { type: "GET_PRODUCTS", payload: request };
 };
