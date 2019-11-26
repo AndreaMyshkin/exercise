@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import menuList from './menu_reducer'
+import items from './items_reducer'
 
 const reducers = combineReducers({
-    menuList
+    items
 })
 
 export default reducers;
