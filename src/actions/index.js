@@ -11,9 +11,9 @@ export const menu = () => {
   };
 };
 
-export const allProducts = (slug, page) => {
+export const allProducts = (slug, page, value) => {
   const request = axios
-    .get(`${proxyUrl}${apiProducts}?category__slug=${slug}&page=${page}`)
+    .get(`${proxyUrl}${apiProducts}?category__slug=${slug}&page=${page}${value}`)
     .then(res => res.data);
   return { type: "GET_PRODUCTS", payload: request };
 };
