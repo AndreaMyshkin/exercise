@@ -9,42 +9,64 @@ class Products extends Component {
     this.state = {
       slug: this.props.match.params.id,
       page: 1,
-      isLoaded: false,
+      disabled: false
     };
   }
+  componentWillMount(id) {
+    this.setState({
+      slug: this.props.match.params.id,
+      page: this.state.page + 1,
+      disabled: true
+    });
+    console.log(this.state.page)
+    this.props.allProducts(this.state.slug, this.state.page);
+  }
+
+
+
   nextPage = () => {
     this.setState({
       page: this.state.page + 1,
-      slug: this.props.match.params.id
     });
-
-    this.props.allProducts(this.state.slug, this.state.page);
+    if(this.state.page >0){
+      this.setState({
+        disabled: false
+      });
+      this.props.allProducts(this.state.slug, this.state.page);
+    
+    }
+ 
   };
   previousPage = () => {
     this.setState({
       page: this.state.page - 1,
-      slug: this.props.match.params.id
     });
-    this.props.allProducts(this.state.slug, this.state.page);
+    if(this.state.page <= 2){
+      this.setState({
+        disabled: true
+      });      
+    } else{  
+      this.props.allProducts(this.state.slug, this.state.page);
+    }
+   
   };
-  componentWillMount(id) {
-    this.setState({
-      slug: this.props.match.params.id
-    });
-    this.props.allProducts(this.state.slug, this.state.page);
-  }
+ 
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.id !== nextProps.match.params.id) {
       let newSlug = nextProps.match.params.id;
       this.setState({
-        page: 1
+        slug:newSlug,
+        page: 1, 
+        disabled:true,
       });
+
       this.props.allProducts(newSlug, this.state.page);
     }
   }
   render() {
-    let menuCategories = this.props.items.allProducts;
+    let products = this.props.items.allProducts;
+    console.log(products)
     let getCategory = this.props.match.params.id;
     let { page } = this.state;
     return (
@@ -52,12 +74,12 @@ class Products extends Component {
         <h3>resultados:{getCategory} </h3>
         <div>
           <h2>Page: {page} </h2>
-          <button onClick={this.previousPage}> previousPage </button>
+          <button onClick={this.previousPage} disabled={this.state.disabled}> previousPage </button>
           <button onClick={this.nextPage}> nextPage </button>
         </div>
-        {menuCategories ? (
+        {products ? (
           <div>
-            {menuCategories.results.map(item => (
+            {products.results.map(item => (
               <div className="">
                 <img src={item.photo.small} />
                 <h1>{item.name}</h1>
