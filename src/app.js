@@ -4,7 +4,8 @@ import { connect } from "react-redux";
 import { menu } from "./actions";
 import { bindActionCreators } from "redux";
 import NavMenu from "./components/NavMenu";
-import Products from "./components/Products";
+import ProductsContainer from "./views/ProductsContainer";
+import "./App.css"
 import {
   BrowserRouter as Router,
 } from "react-router-dom";
@@ -20,10 +21,10 @@ class App extends Component {
     console.log(menuCategories)
     return (
       <>
-        <h1>Menu</h1>
+       
         <Router>
           <NavMenu menuItems={menuCategories} />
-          <Route path="/:id" component={Products} />
+          <Route path="/:id" component={ProductsContainer} />
         </Router>
       </>
     );

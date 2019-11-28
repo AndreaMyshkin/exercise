@@ -1,0 +1,30 @@
+.menu {
+  position: fixed;
+  width: 100%;
+  background: #e63976;
+  height: 56px;
+  top: 0;
+  left: 0; }
+  .menu .menu__navigation {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0 1rem; }
+  .menu .menu__logo a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5rem; }
+  .menu .space {
+    flex: 1; }
+  .menu .menu_navigation-items a {
+    color: white;
+    text-decoration: none; }
+    .menu .menu_navigation-items a:hover {
+      color: orange; }
+  .menu .menu_navigation-items ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex; }
+  .menu .menu_navigation-items li {
+    padding: 0 0.5rem; }
