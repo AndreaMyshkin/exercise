@@ -132,6 +132,17 @@ body {
     color: #37373e;
     font-weight: bold; }
 
+.search_container h2 {
+  text-align: center;
+  font-weight: bold; }
+
+.search_container input {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  border-radius: 5px;
+  height: 2rem; }
+
 .buttons__container {
   display: flex;
   justify-content: center; }

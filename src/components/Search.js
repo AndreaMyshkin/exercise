@@ -4,11 +4,8 @@ const Search = (props) => {
 
     return (
         <div className="search_container">
-            <h2> Search your product</h2>
-
+            <h2> Encuentra tu producto</h2>
             <input type="text" onChange={event => props.keywords(event)}/>
-            <button onClick={props.handleSearch}>Enviar</button>
-
         </div>
     )
 }

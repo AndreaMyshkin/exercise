@@ -1,11 +1,41 @@
-import React from 'react'
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { searchProduct} from "../actions";
+import  Search from "../components/Search";
+import Products from "../components/Products";
+import HomeText from "../components/HomeText";
 
-export default function Home() {
+class Home extends Component {
+    componentWillMount() {
+        this.props.searchProduct();
+      }
+
+      getKeywords = (event) => {
+        let key = event.target.value;
+        this.props.searchProduct(key);
+        console.log(key)
+    }
+  render() {
+    let products = this.props.items.searchProduct;
     return (
-        <div className="home_section">
-           <h1>¿QUÉ ES CANASTA ROSA?</h1> 
-           <p>Canasta Rosa es la plataforma para inspirar, comprar y vender productos únicos, locales y hechos a mano por emprendedores.</p>
-
-        </div>
-    )
+      <div className="container">
+        <section className="space_section"></section>   
+         <HomeText/>  
+         <Search keywords={this.getKeywords}/>
+         <Products products={products}/>
+      </div>
+    );
+  }
 }
+
+const mapStateToProps = state => {
+  return {
+    items: state.items
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators({ searchProduct }, dispatch);
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

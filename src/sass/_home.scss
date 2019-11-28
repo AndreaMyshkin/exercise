@@ -12,3 +12,17 @@
         font-weight: bold;
     }
 }
+
+.search_container{
+ h2{
+     text-align:center;
+     font-weight:bold;
+ }
+input{
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    border-radius:5px;
+    height:2rem;
+}
+}

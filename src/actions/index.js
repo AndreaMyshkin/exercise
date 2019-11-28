@@ -17,3 +17,10 @@ export const allProducts = (slug, page, value) => {
     .then(res => res.data);
   return { type: "GET_PRODUCTS", payload: request };
 };
+
+export const searchProduct = (product) => {
+  const request = axios
+    .get(`${proxyUrl}${apiProducts}?search=${product}`)
+    .then(res => res.data);
+  return { type: "GET_PRODUCT", payload: request };
+};
