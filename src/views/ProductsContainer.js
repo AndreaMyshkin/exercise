@@ -103,18 +103,11 @@ class ProductsContainer extends Component {
   render() {
     let products = this.props.items.allProducts;
     console.log(products);
-    let getCategory = this.props.match.params.id;
     let deliveryDate = "delivery_date=";
-    let { page } = this.state;
-  
-
     return (
       <div className="container">
-        <section className="space_section"></section>
-        
+        <section className="space_section"></section>     
         <div>
-         
-        
           <form onSubmit={this.handleButtonSubmit}>
             <label className="select-container">
               <select
