@@ -109,21 +109,21 @@ class ProductsContainer extends Component {
   
 
     return (
-      <div>
-        <h3>{getCategory} resultados </h3>
-         <ButtonPreviousPage onClick={this.previousPage} disabled={this.state.disabled}/>
-         <ButtonNextPage onClick={this.nextPage}/>
+      <div className="container">
+        <section className="space_section"></section>
+        
         <div>
-          <h2>Page: {page} </h2>
+         
         
           <form onSubmit={this.handleButtonSubmit}>
-            <label>
+            <label className="select-container">
               <select
-                multiple={true}
+                className='select-filter'
+                multiple={false}
                 value={this.state.value}
                 onChange={this.handleOnChange}
               >
-                <option value="" />
+                <option>Rango de precio</option>
                 <option value="max_price=100">Debajo de 100</option>
                 <option value="min_price=100&max_price=200">100-200</option>
                 <option value="min_price=200&max_price=300">200-300</option>
@@ -131,11 +131,13 @@ class ProductsContainer extends Component {
                 <option value="min_price=400&max_price=500">400-500</option>
               </select>
               <select
-                multiple={true}
+                className='select-filter'
+                multiple={false}
                 value={this.state.value}
                 onChange={this.handleOnChange}
               >
-                <option value="" />
+              
+                <option>Lugar de entrega</option>
                 <option value="zone=monterrey">Monterrey</option>
                 <option value="zone=area-metropolitana">
                   Area Metropolitana
@@ -143,11 +145,12 @@ class ProductsContainer extends Component {
                 <option value="zone=national">nacional</option>
               </select>
               <select
-                multiple={true}
+                className='select-filter'
+                multiple={false}
                 value={this.state.value}
                 onChange={this.handleOnChange}
               >
-                <option value="" />
+                <option>Día de entrega</option>
                 <option value={deliveryDate + moment().format("YYYY-MM-DD")}>
                   Recíbelo hoy
                 </option>
@@ -173,9 +176,16 @@ class ProductsContainer extends Component {
                 </option>
               </select>
             </label>
-            <input type="submit" value="Submit" />
+            <div className="submit-button__container">
+            <input type="submit" value="Aplicar filtros" className="submit-button" />
+            </div>
+           
           </form>
         </div>
+        <div className="buttons__container">
+        <ButtonPreviousPage onClick={this.previousPage} disabled={this.state.disabled}/>
+         <ButtonNextPage onClick={this.nextPage}/>
+         </div>
         <Products products={products}/>
       </div>
     );

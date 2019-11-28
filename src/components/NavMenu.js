@@ -1,13 +1,18 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import ToggleButton from "../components/ToggleButton";
+import logo from '../assets/images/logo.png';
 
 const NavMenu = props => (
   <div>
     <header className="menu">
       <nav className="menu__navigation">
-        <div></div>
+        <div className="toggle-button">
+          <ToggleButton click={props.menuHandler}/>
+        </div>
         <div className="menu__logo">
-          <a href="/">The logo</a>
+        
+          <a href="/"><img src={logo} /> canasta<span className="canasta_name">rosa </span></a>
         </div>
         <div className="space"></div>
         <div className="menu_navigation-items">
